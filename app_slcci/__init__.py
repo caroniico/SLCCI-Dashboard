@@ -1,0 +1,3 @@
+"""
+SLCCI Standalone App Package
+"""

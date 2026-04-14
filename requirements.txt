@@ -1,0 +1,27 @@
+# SLCCI Dashboard - Dependencies
+# ===============================
+
+# Core
+numpy>=1.24.0
+pandas>=2.0.0
+xarray>=2023.1.0
+netCDF4>=1.6.0
+scipy>=1.10.0
+
+# Plotting
+plotly>=5.15.0
+matplotlib>=3.7.0
+
+# Geographic
+geopandas>=0.14.0
+shapely>=2.0.0
+
+# UI
+streamlit>=1.28.0
+
+# Logging
+structlog>=23.0.0
+python-json-logger>=2.0.0
+
+# Config
+pyyaml>=6.0

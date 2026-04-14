@@ -1,0 +1,143 @@
+# Pre-defined Regions Configuration
+# ==================================
+# Common geographic regions for quick selection.
+#
+# Last Updated: 2025-12-29
+
+metadata:
+  version: "1.0"
+  updated: "2025-12-29"
+
+regions:
+  # === ARCTIC ===
+  arctic_ocean:
+    name: "Arctic Ocean"
+    description: "Full Arctic Ocean region"
+    bbox:
+      lat_min: 66.5
+      lat_max: 90.0
+      lon_min: -180.0
+      lon_max: 180.0
+    tags: ["arctic", "polar"]
+    
+  central_arctic:
+    name: "Central Arctic"
+    description: "Central Arctic Ocean deep basin"
+    bbox:
+      lat_min: 80.0
+      lat_max: 90.0
+      lon_min: -180.0
+      lon_max: 180.0
+    tags: ["arctic", "polar", "deep"]
+    
+  # === NORDIC SEAS ===
+  norwegian_sea:
+    name: "Norwegian Sea"
+    description: "Norwegian Sea region"
+    bbox:
+      lat_min: 62.0
+      lat_max: 72.0
+      lon_min: -10.0
+      lon_max: 15.0
+    tags: ["atlantic", "nordic"]
+    
+  greenland_sea:
+    name: "Greenland Sea"
+    description: "Greenland Sea region"
+    bbox:
+      lat_min: 68.0
+      lat_max: 80.0
+      lon_min: -20.0
+      lon_max: 10.0
+    tags: ["atlantic", "nordic", "arctic"]
+    
+  barents_sea:
+    name: "Barents Sea"
+    description: "Barents Sea region"
+    bbox:
+      lat_min: 70.0
+      lat_max: 80.0
+      lon_min: 15.0
+      lon_max: 60.0
+    tags: ["atlantic", "arctic"]
+    
+  # === NORTH ATLANTIC ===
+  north_atlantic:
+    name: "North Atlantic"
+    description: "North Atlantic subpolar region"
+    bbox:
+      lat_min: 45.0
+      lat_max: 66.5
+      lon_min: -60.0
+      lon_max: 0.0
+    tags: ["atlantic", "subpolar"]
+    
+  labrador_sea:
+    name: "Labrador Sea"
+    description: "Labrador Sea deep convection region"
+    bbox:
+      lat_min: 55.0
+      lat_max: 65.0
+      lon_min: -60.0
+      lon_max: -45.0
+    tags: ["atlantic", "convection"]
+    
+  # === PACIFIC ARCTIC ===
+  chukchi_sea:
+    name: "Chukchi Sea"
+    description: "Chukchi Sea region"
+    bbox:
+      lat_min: 66.0
+      lat_max: 75.0
+      lon_min: -180.0
+      lon_max: -155.0
+    tags: ["pacific", "arctic"]
+    
+  beaufort_sea:
+    name: "Beaufort Sea"
+    description: "Beaufort Sea region"
+    bbox:
+      lat_min: 69.0
+      lat_max: 76.0
+      lon_min: -155.0
+      lon_max: -120.0
+    tags: ["pacific", "arctic"]
+    
+  # === CANADIAN WATERS ===
+  baffin_bay:
+    name: "Baffin Bay"
+    description: "Baffin Bay region"
+    bbox:
+      lat_min: 68.0
+      lat_max: 78.0
+      lon_min: -80.0
+      lon_max: -50.0
+    tags: ["atlantic", "canadian"]
+    
+  hudson_bay:
+    name: "Hudson Bay"
+    description: "Hudson Bay region"
+    bbox:
+      lat_min: 55.0
+      lat_max: 65.0
+      lon_min: -95.0
+      lon_max: -75.0
+    tags: ["canadian", "subarctic"]
+
+# Region groups for UI
+groups:
+  arctic:
+    name: "Arctic Regions"
+    regions: ["arctic_ocean", "central_arctic", "greenland_sea", "barents_sea", "chukchi_sea", "beaufort_sea"]
+    
+  nordic:
+    name: "Nordic Seas"
+    regions: ["norwegian_sea", "greenland_sea", "barents_sea"]
+    
+  atlantic:
+    name: "North Atlantic"
+    regions: ["north_atlantic", "labrador_sea", "norwegian_sea"]
+    
+  canadian:
+    name: "Canadian Waters"
+    regions: ["baffin_bay", "hudson_bay", "beaufort_sea"]

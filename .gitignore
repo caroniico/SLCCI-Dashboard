@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Data (too large for git)
+data/cache/
+data/netcdf/
+*.nc
+
+# Logs
+logs/*.log*
+
+# Credentials
+config/credentials.yaml

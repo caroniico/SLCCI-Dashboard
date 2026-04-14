@@ -1,0 +1,224 @@
+# Datasets Catalog Configuration
+# ===============================
+# Multi-provider dataset catalog with latency metadata.
+# Extends catalog.yaml with structured configuration.
+#
+# Last Updated: 2025-12-29
+
+metadata:
+  version: "1.0"
+  updated: "2025-12-29"
+  note: "Extends CopernicusCatalog with ERA5, NOAA, NASA providers"
+
+# Latency badges legend:
+# 🟢 = Real-time (<6h)
+# 🟡 = Near real-time (6h-24h)
+# 🟠 = Delayed (1-7 days)
+# 🔴 = Archive (>7 days)
+
+providers:
+  copernicus_marine:
+    name: "Copernicus Marine Service"
+    url: "https://marine.copernicus.eu/"
+    client: "src.data_manager.catalog.CopernicusCatalog"
+    auth_required: true
+    env_vars: ["COPERNICUS_USERNAME", "COPERNICUS_PASSWORD"]
+    
+  ecmwf:
+    name: "ECMWF Climate Data Store"
+    url: "https://cds.climate.copernicus.eu/"
+    client: "src.surge_shazam.data.era5_client"
+    auth_required: true
+    env_vars: ["CDS_API_KEY"]
+    
+  noaa:
+    name: "NOAA Climate Indices"
+    url: "https://psl.noaa.gov/"
+    client: "src.surge_shazam.data.climate_indices"
+    auth_required: false
+    
+  nasa_podaac:
+    name: "NASA PO.DAAC"
+    url: "https://podaac.jpl.nasa.gov/"
+    client: "src.surge_shazam.data.cygnss_client"
+    auth_required: true
+    env_vars: ["EARTHDATA_USERNAME", "EARTHDATA_PASSWORD"]
+
+datasets:
+  # === SEA LEVEL ===
+  cmems_sealevel:
+    name: "CMEMS Sea Level L4"
+    provider: copernicus_marine
+    product_id: "SEALEVEL_GLO_PHY_L4_NRT_008_046"
+    variables:
+      - sla
+      - adt
+      - ugos
+      - vgos
+    resolution:
+      spatial: "0.25°"
+      temporal: "daily"
+    coverage:
+      temporal: ["1993-01-01", "present"]
+      spatial: "global"
+    latency: "~1d"
+    latency_badge: "🟡"
+    status: available
+    
+  # === SEA SURFACE TEMPERATURE ===
+  cmems_sst:
+    name: "CMEMS SST OSTIA"
+    provider: copernicus_marine
+    product_id: "SST_GLO_SST_L4_NRT_OBSERVATIONS_010_001"
+    variables:
+      - analysed_sst
+      - analysis_error
+      - sea_ice_fraction
+    resolution:
+      spatial: "0.05°"
+      temporal: "daily"
+    coverage:
+      temporal: ["2007-01-01", "present"]
+      spatial: "global"
+    latency: "~1d"
+    latency_badge: "🟡"
+    status: available
+    
+  # === OCEAN CURRENTS ===
+  cmems_currents:
+    name: "CMEMS Ocean Currents"
+    provider: copernicus_marine
+    product_id: "GLOBAL_ANALYSISFORECAST_PHY_001_024"
+    variables:
+      - uo
+      - vo
+      - thetao
+      - so
+      - zos
+    resolution:
+      spatial: "0.083°"
+      temporal: "daily"
+    coverage:
+      temporal: ["2019-01-01", "present"]
+      spatial: "global"
+    latency: "~1d"
+    latency_badge: "🟡"
+    status: available
+    
+  # === WAVES ===
+  cmems_waves:
+    name: "CMEMS Ocean Waves"
+    provider: copernicus_marine
+    product_id: "GLOBAL_ANALYSISFORECAST_WAV_001_027"
+    variables:
+      - VHM0
+      - VMDR
+      - VTM10
+      - VTPK
+    resolution:
+      spatial: "0.083°"
+      temporal: "3-hourly"
+    coverage:
+      temporal: ["2019-01-01", "present"]
+      spatial: "global"
+    latency: "~1d"
+    latency_badge: "🟡"
+    status: available
+    
+  # === ERA5 ATMOSPHERIC ===
+  era5_surface:
+    name: "ERA5 Surface Variables"
+    provider: ecmwf
+    product_id: "reanalysis-era5-single-levels"
+    variables:
+      - 10m_u_component_of_wind
+      - 10m_v_component_of_wind
+      - mean_sea_level_pressure
+      - 2m_temperature
+      - total_precipitation
+      - surface_pressure
+    resolution:
+      spatial: "0.25°"
+      temporal: "hourly"
+    coverage:
+      temporal: ["1940-01-01", "present"]
+      spatial: "global"
+    latency: "~5d"
+    latency_badge: "🟠"
+    status: available
+    
+  era5_pressure:
+    name: "ERA5 Pressure Levels"
+    provider: ecmwf
+    product_id: "reanalysis-era5-pressure-levels"
+    variables:
+      - geopotential
+      - temperature
+      - u_component_of_wind
+      - v_component_of_wind
+      - specific_humidity
+    resolution:
+      spatial: "0.25°"
+      temporal: "hourly"
+    coverage:
+      temporal: ["1940-01-01", "present"]
+      spatial: "global"
+    latency: "~5d"
+    latency_badge: "🟠"
+    status: available
+    
+  # === CLIMATE INDICES ===
+  noaa_indices:
+    name: "NOAA Climate Indices"
+    provider: noaa
+    product_id: "climate-indices"
+    variables:
+      - NAO
+      - AO
+      - PDO
+      - ENSO
+      - AMO
+    resolution:
+      spatial: "N/A"
+      temporal: "monthly"
+    coverage:
+      temporal: ["1950-01-01", "present"]
+      spatial: "global"
+    latency: "~1mo"
+    latency_badge: "🔴"
+    status: available
+    
+  # === CYGNSS ===
+  cygnss_wind:
+    name: "CYGNSS L3 Wind Speed"
+    provider: nasa_podaac
+    product_id: "CYGNSS_L3_v3.1"
+    variables:
+      - wind_speed
+      - wind_speed_uncertainty
+    resolution:
+      spatial: "0.2°"
+      temporal: "daily"
+    coverage:
+      temporal: ["2017-03-01", "present"]
+      spatial: "±38° latitude"
+    latency: "2-24h"
+    latency_badge: "🟢"
+    status: available
+
+# Variable groups for common use cases
+variable_groups:
+  sea_level_analysis:
+    description: "Standard sea level analysis variables"
+    datasets: ["cmems_sealevel"]
+    variables: ["sla", "adt", "ugos", "vgos"]
+    
+  surface_forcing:
+    description: "Atmospheric surface forcing"
+    datasets: ["era5_surface"]
+    variables: ["10m_u_component_of_wind", "10m_v_component_of_wind", "mean_sea_level_pressure"]
+    
+  ocean_state:
+    description: "Full ocean state"
+    datasets: ["cmems_sst", "cmems_currents"]
+    variables: ["analysed_sst", "uo", "vo", "thetao", "so"]

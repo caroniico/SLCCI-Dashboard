@@ -1,0 +1,107 @@
+# Default Configuration
+# =====================
+# Default parameters for the NICO application.
+#
+# Last Updated: 2025-12-29
+
+metadata:
+  version: "1.0"
+  updated: "2025-12-29"
+
+# Data loading defaults
+data:
+  # Temporal resolution
+  temporal_resolution: "daily"
+  
+  # Spatial resolution (degrees)
+  spatial_resolution: 0.25
+  
+  # Default time window (days back from today)
+  default_time_window_days: 30
+  
+  # Maximum data points before sampling
+  max_points_before_sampling: 100000
+  
+  # Cache TTL (seconds)
+  cache_ttl: 3600
+
+# Gate defaults
+gates:
+  # Default buffer around gate (km)
+  default_buffer_km: 50.0
+  
+  # Shapefile directory
+  shapefile_dir: "gates/"
+  
+  # Default coordinate reference system
+  crs: "EPSG:4326"
+
+# Analysis defaults
+analysis:
+  # Binning
+  bin_size_degrees: 0.01
+  
+  # MSS variable name
+  mss_variable: "mean_sea_surface"
+  
+  # Quality flag filtering
+  use_quality_flag: true
+  valid_flag_value: 0
+  
+  # Sampling fraction for large datasets
+  sample_fraction: 1.0
+
+# Visualization defaults
+visualization:
+  # Map
+  map_zoom: 4
+  map_center_lat: 75.0
+  map_center_lon: 0.0
+  
+  # Colors
+  colorscale: "RdYlBu_r"
+  
+  # Point size
+  marker_size: 5
+  
+  # Max points for map display
+  max_map_points: 50000
+
+# API defaults
+api:
+  # Rate limiting
+  requests_per_minute: 60
+  
+  # Timeout (seconds)
+  request_timeout: 300
+  
+  # Max concurrent downloads
+  max_concurrent_downloads: 3
+
+# Streamlit defaults
+streamlit:
+  # Page config
+  page_title: "NICO - Ocean Analysis"
+  page_icon: "🌊"
+  layout: "wide"
+  
+  # Sidebar defaults
+  sidebar_state: "expanded"
+
+# Paths
+paths:
+  # Data directories
+  data_dir: "data/"
+  cache_dir: "data/cache/"
+  output_dir: "data/output/"
+  
+  # Config files
+  gates_config: "config/gates.yaml"
+  datasets_config: "config/datasets.yaml"
+  regions_config: "config/regions.yaml"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/nico.log"

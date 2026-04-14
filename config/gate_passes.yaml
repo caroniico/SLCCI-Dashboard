@@ -1,0 +1,127 @@
+# Pre-computed closest passes for each gate
+# Format: gate_name -> { slcci_passes: [...], cmems_tracks: [...] }
+# 
+# These are computed ONCE and cached here for instant loading.
+# Run `python scripts/compute_gate_passes.py` to regenerate.
+#
+# Last updated: 2026-01-03
+
+gates:
+  # === FRAM STRAIT & NORDIC SEAS ===
+  fram_strait_S3_pass_481:
+    display_name: "Fram Strait"
+    suggested_pass: 481  # From filename (S3)
+    slcci_passes: [163, 248, 76, 220, 246]  # 5 closest J2 passes
+    cmems_tracks: [481, 163, 248, 220, 76]  # 5 closest CMEMS tracks
+    
+  denmark_strait_TPJ_pass_246:
+    display_name: "Denmark Strait"
+    suggested_pass: 246  # From filename (TPJ = Jason)
+    slcci_passes: [246, 220, 248, 163, 76]
+    cmems_tracks: [246, 220, 248, 163, 481]
+    
+  norwegian_sea_boundary_TPJ_pass_220:
+    display_name: "Norwegian Sea Boundary"
+    suggested_pass: 220
+    slcci_passes: [220, 246, 248, 163, 76]
+    cmems_tracks: [220, 246, 248, 163, 481]
+
+  # === BARENTS SEA ===
+  barents_sea_opening_S3_pass_481:
+    display_name: "Barents Sea Opening"
+    suggested_pass: 481
+    slcci_passes: [481, 163, 248, 76, 220]
+    cmems_tracks: [481, 163, 248, 76, 220]
+    
+  barents_sea-central_arctic_ocean:
+    display_name: "Barents Sea - Central Arctic"
+    slcci_passes: [163, 248, 76, 220, 246]
+    cmems_tracks: [163, 248, 76, 220, 481]
+    
+  barents_sea-kara_sea:
+    display_name: "Barents Sea - Kara Sea"
+    slcci_passes: [163, 76, 248, 220, 246]
+    cmems_tracks: [163, 76, 248, 220, 481]
+
+  # === BERING STRAIT ===
+  bering_strait_TPJ_pass_076:
+    display_name: "Bering Strait"
+    suggested_pass: 76
+    slcci_passes: [2, 76, 163, 248, 220, 246]
+    cmems_tracks: [76, 163, 248, 220, 481]
+    
+  bering_strait:
+    display_name: "Bering Strait (Generic)"
+    suggested_pass: 2
+    slcci_passes: [2, 76, 163, 248]
+    cmems_tracks: [76, 163, 248]
+
+  # === DAVIS STRAIT & CANADIAN ARCTIC ===
+  davis_strait:
+    display_name: "Davis Strait"
+    slcci_passes: [248, 246, 220, 163, 76]
+    cmems_tracks: [248, 246, 220, 163, 481]
+    
+  lancaster_sound:
+    display_name: "Lancaster Sound"
+    slcci_passes: [248, 163, 76, 220, 246]
+    cmems_tracks: [248, 163, 76, 220, 481]
+    
+  jones_sound:
+    display_name: "Jones Sound"
+    slcci_passes: [248, 163, 76, 220, 246]
+    cmems_tracks: [248, 163, 76, 220, 481]
+    
+  nares_strait:
+    display_name: "Nares Strait"
+    slcci_passes: [248, 163, 220, 76, 246]
+    cmems_tracks: [248, 163, 220, 76, 481]
+
+  # === CANADIAN ARCTIC ARCHIPELAGO ===
+  canadian_arctic_archipelago-central_arctic_ocean:
+    display_name: "CAA - Central Arctic"
+    slcci_passes: [163, 248, 76, 220, 246]
+    cmems_tracks: [163, 248, 76, 220, 481]
+    
+  beaufort_sea-canadian_arctic_archipelago:
+    display_name: "Beaufort Sea - CAA"
+    slcci_passes: [76, 163, 248, 220, 246]
+    cmems_tracks: [76, 163, 248, 220, 481]
+
+  # === BEAUFORT SEA ===
+  beaufort_sea-central_arctic_ocean:
+    display_name: "Beaufort Sea - Central Arctic"
+    slcci_passes: [76, 163, 248, 220, 246]
+    cmems_tracks: [76, 163, 248, 220, 481]
+
+  # === KARA & LAPTEV SEAS ===
+  kara_sea-central_arctic_ocean:
+    display_name: "Kara Sea - Central Arctic"
+    slcci_passes: [163, 76, 248, 220, 246]
+    cmems_tracks: [163, 76, 248, 220, 481]
+    
+  kara_sea-laptev_sea:
+    display_name: "Kara Sea - Laptev Sea"
+    slcci_passes: [163, 76, 248, 220, 246]
+    cmems_tracks: [163, 76, 248, 220, 481]
+    
+  laptev_sea-central_arctic_ocean:
+    display_name: "Laptev Sea - Central Arctic"
+    slcci_passes: [163, 76, 248, 220, 246]
+    cmems_tracks: [163, 76, 248, 220, 481]
+    
+  laptev_sea-east_siberian_seas:
+    display_name: "Laptev Sea - East Siberian Sea"
+    slcci_passes: [76, 163, 248, 220, 246]
+    cmems_tracks: [76, 163, 248, 220, 481]
+
+  # === EAST SIBERIAN SEA ===
+  east_siberian_sea-central_arctic_ocean:
+    display_name: "East Siberian Sea - Central Arctic"
+    slcci_passes: [76, 163, 248, 220, 246]
+    cmems_tracks: [76, 163, 248, 220, 481]
+    
+  east_siberian_sea-beaufort_sea:
+    display_name: "East Siberian Sea - Beaufort Sea"
+    slcci_passes: [76, 163, 248, 220, 246]
+    cmems_tracks: [76, 163, 248, 220, 481]
